@@ -14,9 +14,13 @@ st.set_page_config(
 st.title("🤟 ASL Alphabet Recognition")
 st.write("Upload an image of an American Sign Language hand gesture.")
 
-model = tf.keras.models.load_model(
-    "/kaggle/working/best_cnn_model.keras"
-)
+
+from pathlib import Path
+
+MODEL_PATH = Path(__file__).parent / "best_cnn_model.keras"
+
+model = tf.keras.models.load_model(MODEL_PATH)
+
 
 with open("/kaggle/working/class_names.json", "r") as f:
     class_names = json.load(f)
