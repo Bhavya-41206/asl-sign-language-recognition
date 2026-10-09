@@ -22,7 +22,13 @@ MODEL_PATH = Path(__file__).parent / "best_cnn_model.keras"
 model = tf.keras.models.load_model(MODEL_PATH)
 
 
-with open("/kaggle/working/class_names.json", "r") as f:
+BASE_DIR = Path(__file__).parent
+
+model = tf.keras.models.load_model(
+    BASE_DIR / "best_cnn_model.keras"
+)
+
+with open(BASE_DIR / "class_names.json", "r") as f:
     class_names = json.load(f)
 
 uploaded_file = st.file_uploader(
